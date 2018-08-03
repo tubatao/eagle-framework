@@ -1,0 +1,97 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    maven {
+        name "tubatao"
+        url "http://nexus.server/repository/tubatao"
+    }
+}
+buildscript {
+    ext {
+        spring_bootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        maven {
+            name "tubatao"
+            url "http://nexus.server/repository/tubatao"
+        }
+        jcenter()
+        mavenCentral()
+
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_bootVersion}"
+        classpath 'org.springframework:springloaded:1.2.6.RELEASE'
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE'
+    }
+}
+group = 'com.tubatao.eagle'
+version = '1.0.0-RELEASE'
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+        }
+    }
+    repositories {
+        maven {
+            name "eagle"
+            url "http://nexus.server/repository/eagle/"
+            credentials {
+                username "admin"
+                password "admin123"
+            }
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.group == 'io.netty' && details.requested.name == 'netty-codec-http') {
+            details.useVersion '4.1.26.Final'
+        }
+    }
+    resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+}
+task sourcesJar(type: Jar, dependsOn: compileJava) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:Brussels-SR2'
+    }
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Dalston.RELEASE"
+    }
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-netflix:1.3.0.RELEASE'
+    }
+    resolutionStrategy {
+        cacheChangingModulesFor 0, 'seconds'
+    }
+}
+dependencies {
+    compile ("org.springframework.boot:spring-boot-starter-data-redis")
+    compile ("org.springframework.boot:spring-boot-starter-cache")
+    compile ("org.springframework.boot:spring-boot-starter-aop")
+    compile ("org.springframework.retry:spring-retry")
+    compile ("org.springframework.cloud:spring-cloud-starter-bus-amqp")
+    compile ("com.baomidou:mybatis-plus:2.1.9")
+    compile ("com.xiaoleilu:hutool-all:3.3.2")
+    compile ("io.springfox:springfox-swagger2:2.9.2")
+    compile ("com.luhuiguo:fastdfs-spring-boot-starter:0.2.0")
+    compile ("org.springframework.cloud:spring-cloud-starter-bus-amqp")
+    compile ("org.projectlombok:lombok:1.18.0")
+    compile ("com.alibaba:transmittable-thread-local:2.2.0")
+    compile ("io.jsonwebtoken:jjwt:0.9.0")
+    compile ("com.alibaba:fastjson:1.2.46")
+    compile ("com.fasterxml.jackson.core:jackson-databind:2.9.6")
+    compile ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6")
+}
