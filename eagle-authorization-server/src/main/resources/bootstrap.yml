@@ -1,0 +1,26 @@
+server:
+    port: 9010
+    #context-path: /uaa
+spring:
+    application:
+        name: eagle-authorization-server
+    cloud:
+        config:
+            uri: http://config.server:8100
+            discovery:
+                enabled: true
+                service-id: config-server
+                fail-fast: true
+                retry:
+                    initial-interval: 2000
+                    max-interval: 10000n
+                    multiplier: 2
+                    max-attempts: 10
+eureka:
+    instance:
+        preferIpAddress: true
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://eureka.server:8761/eureka/

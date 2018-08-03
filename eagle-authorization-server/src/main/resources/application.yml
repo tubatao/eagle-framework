@@ -1,0 +1,81 @@
+#logging
+logging: 
+    level: 
+        org.hibernate.SQL: WARN
+
+authorization:
+    interceptor:
+        prefix: /api
+# Configuration for Spring Framework
+# MVC it is just used for InternalResourceViewResolver
+#spring.view.prefix=
+#spring.view.suffix=
+#date-format
+spring: 
+    jackson: 
+        serialization: 
+            write-dates-as-timestamps: false
+    messages: 
+        basename: i18n/messages
+        encoding: UTF-8
+        cache-seconds: 3600
+        param: lang
+
+
+    datasource:
+        url: jdbc:mysql://mysql.server:3308/pig?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: 123456
+        druid:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+
+config:
+    security:
+        rsa:
+            enabled: true
+    id:
+        snowflake:
+            enabled: true
+grpc:
+    server:
+        port: 10681
+
+security:
+  oauth2:
+#    resource:
+#      filter-order: 3
+    token:
+      store:
+        type: redis
+
+#redis configuration
+redis:
+    host: redis.server
+    port: 6379
+    password: peony_redis
+    maxActive: 300
+    maxIdle: 100
+    maxWait: 50000
+
+# jwt configuration
+jwt:
+    jks:
+        #path: /work/opt
+        fileName: keystore.jks
+        password: 123456
+        alias: tubatao
+    mac:
+        key: eagle_!@#$%EFS$s42lS32sd^$@#$D%@#%^*FLJOIYsdl32#@$#@sdf23$
+    encryption: rsa  # 加密方式 mac 或者rsa
+
+
+token:
+    supportRefreshToken: true  # Whether to support the refresh token.
+    reuseRefreshToken: true     # Whether to reuse refresh tokens (until expired).
+    accessTokenValiditySeconds: 10  # Expire time
+    refreshTokenValiditySeconds: 20   # Refresh time
+
+
+ignore:
+    urls:
+        - /test
