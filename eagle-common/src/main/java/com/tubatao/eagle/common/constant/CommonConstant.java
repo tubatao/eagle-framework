@@ -31,60 +31,60 @@ package com.tubatao.eagle.common.constant;
  */
 public interface CommonConstant {
     /**
-     * Token request header name
+     * token请求头名称
      */
     String REQ_HEADER = "Authorization";
 
     /**
-     * Token separator
+     * token分割符
      */
     String TOKEN_SPLIT = "Bearer ";
 
     /**
-     * Jwt signature
+     * jwt签名
      */
     String SIGN_KEY = "EAGLE";
     /**
-     * Delete
+     * 删除
      */
     String STATUS_DEL = "1";
     /**
-     * Normal
+     * 正常
      */
     String STATUS_NORMAL = "0";
 
     /**
-     * Lock
+     * 锁定
      */
     String STATUS_LOCK = "9";
 
     /**
-     * Menu
+     * 菜单
      */
     String MENU = "0";
 
     /**
-     * Button
+     * 按钮
      */
     String BUTTON = "1";
 
     /**
-     * Delete tag
+     * 删除标记
      */
     String DEL_FLAG = "del_flag";
 
     /**
-     * Encoding
+     * 编码
      */
     String UTF8 = "UTF-8";
 
     /**
-     * JSON resources
+     * JSON 资源
      */
     String CONTENT_TYPE = "application/json; charset=utf-8";
 
     /**
-     * ALIYUN_SMS
+     * 阿里大鱼
      */
     String ALIYUN_SMS = "aliyun_sms";
 

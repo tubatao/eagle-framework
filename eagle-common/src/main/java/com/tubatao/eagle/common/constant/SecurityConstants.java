@@ -31,36 +31,36 @@ package com.tubatao.eagle.common.constant;
  */
 public interface SecurityConstants {
     /**
-     * Prefix
+     * 前缀
      */
     String EAGLE_PREFIX = "eagle_";
     /**
-     * User header
+     * 用户信息头
      */
     String USER_HEADER = "x-user-header";
 
     /**
-     * role header
+     * 角色信息头
      */
     String ROLE_HEADER = "x-role-header";
     /**
-     * license for prject
+     * 项目的license
      */
     String EAGLE_LICENSE = "made by eagle";
     /**
-     * base role
+     * 基础角色
      */
     String BASE_ROLE = "ROLE_USER";
     /**
-     * Authorization code mode
+     * 授权码模式
      */
     String AUTHORIZATION_CODE = "authorization_code";
     /**
-     * Password mode
+     * 密码模式
      */
     String PASSWORD = "password";
     /**
-     * Refresh token
+     * 刷新token
      */
     String REFRESH_TOKEN = "refresh_token";
 
@@ -70,59 +70,59 @@ public interface SecurityConstants {
     String OAUTH_TOKEN_URL = "/oauth/token";
 
     /**
-     * The URL for mobile login
+     * 手机登录URL
      */
     String MOBILE_TOKEN_URL = "/mobile/token";
 
     /**
-     * Verification code url prefix
+     * 默认的处理验证码的url前缀
      */
     String DEFAULT_VALIDATE_CODE_URL_PREFIX = "/code";
 
     /**
-     * The default url prefix for processing the verification code
+     * 手机号的处理验证码的url前缀
      */
     String MOBILE_VALIDATE_CODE_URL_PREFIX = "/smsCode";
 
     /**
-     * The width for generated graphic verification code by default
+     * 默认生成图形验证码宽度
      */
     String DEFAULT_IMAGE_WIDTH = "100";
 
     /**
-     * The high for generated graphic verification code by default
+     * 默认生成图像验证码高度
      */
     String DEFAULT_IMAGE_HEIGHT = "40";
 
     /**
-     * The number of generated graphics verification codes by default
+     * 默认生成图形验证码长度
      */
     String DEFAULT_IMAGE_LENGTH = "4";
 
     /**
-     * The expiration time of generated graphics verification codes by default
+     * 默认生成图形验证码过期时间
      */
     int DEFAULT_IMAGE_EXPIRE = 60;
     /**
-     * Border color , legal value: r,g,b (and optional alpha) or white,black,blue.
+     * 边框颜色，合法值： r,g,b (and optional alpha) 或者 white,black,blue.
      */
     String DEFAULT_COLOR_FONT = "black";
 
     /**
-     * Picture border
+     * 图片边框
      */
     String DEFAULT_IMAGE_BORDER = "no";
     /**
-     * Default picture interval
+     * 默认图片间隔
      */
     String DEFAULT_CHAR_SPACE = "5";
 
     /**
-     * Default code prefix
+     * 默认保存code的前缀
      */
     String DEFAULT_CODE_KEY = "DEFAULT_CODE_KEY";
     /**
-     * Captcha text size
+     * 验证码文字大小
      */
     String DEFAULT_IMAGE_FONT_SIZE = "30";
 
@@ -132,34 +132,34 @@ public interface SecurityConstants {
     String TOKEN_USER_DETAIL = "token-user-detail";
 
     /**
-     * Default social login address
+     * 默认的social的登录地址
      */
     String DEFAULT_SOCIAL_PROCESS_URL = "/social";
     /**
-     * Default social registered address
+     * 默认的social的注册地址
      */
     String DEFAULT_SOCIAL_SIGNUP_URL = "/social/signup";
 
     /**
-     * The field of the sys_oauth_client_details table, excluding client_id, client_secret
+     * sys_oauth_client_details 表的字段，不包括client_id、client_secret
      */
     String CLIENT_FIELDS = "client_id, client_secret, resource_ids, scope, "
             + "authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity, "
             + "refresh_token_validity, additional_information, autoapprove";
 
     /**
-     *JdbcClientDetailsService query statement
+     *JdbcClientDetailsService 查询语句
      */
     String BASE_FIND_STATEMENT = "select " + CLIENT_FIELDS
             + " from sys_oauth_client_details";
 
     /**
-     * Default query statement
+     * 默认的查询语句
      */
     String DEFAULT_FIND_STATEMENT = BASE_FIND_STATEMENT + " order by client_id";
 
     /**
-     * Query by condition client_id
+     * 按条件client_id 查询
      */
     String DEFAULT_SELECT_STATEMENT = BASE_FIND_STATEMENT + " where client_id = ?";
 }

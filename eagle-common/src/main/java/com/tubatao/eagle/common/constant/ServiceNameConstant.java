@@ -33,7 +33,7 @@ public interface ServiceNameConstant {
     /**
      * 认证服务的SERVICEID（zuul 配置的对应）
      */
-    String AUTH_SERVICE = "eagle-auth";
+    String AUTH_SERVICE = "pig-auth";
 
     /**
      * UMPS模块

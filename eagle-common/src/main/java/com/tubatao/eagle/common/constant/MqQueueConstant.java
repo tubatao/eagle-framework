@@ -31,32 +31,32 @@ package com.tubatao.eagle.common.constant;
  */
 public interface MqQueueConstant {
     /**
-     * log rabbit queue name
+     * log rabbit队列名称
      */
     String LOG_QUEUE = "log";
 
     /**
-     * the queue for send SMS verification code
+     * 发送短信验证码队列
      */
     String MOBILE_CODE_QUEUE = "mobile_code_queue";
 
     /**
-     * the queue for SMS service status
+     * 短信服务状态队列
      */
     String MOBILE_SERVICE_STATUS_CHANGE = "mobile_service_status_change";
 
     /**
-     * the queue for dingtalk service status
+     * 钉钉服务状态队列
      */
     String DINGTALK_SERVICE_STATUS_CHANGE = "dingtalk_service_status_change";
 
     /**
-     * the queue for zipkin
+     * zipkin 队列
      */
     String ZIPKIN_NAME_QUEUE = "zipkin";
 
     /**
-     * the queue for route configuration status
+     * 路由配置状态队列
      */
     String ROUTE_CONFIG_CHANGE = "route_config_change";
 }
