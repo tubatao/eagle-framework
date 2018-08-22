@@ -22,11 +22,10 @@
  */
 package com.tubatao.eagle.authorization.config;
 
-import com.tubatao.eagle.authorization.constants.SecurityConstants;
+import com.tubatao.eagle.common.constant.SecurityConstants;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-
 import java.util.Map;
 
 /**

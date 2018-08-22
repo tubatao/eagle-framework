@@ -23,7 +23,7 @@
 package com.tubatao.eagle.authorization.mobile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tubatao.eagle.authorization.constants.CommonConstant;
+import com.tubatao.eagle.common.constant.CommonConstant;
 import com.tubatao.eagle.util.AuthUtils;
 import com.xiaoleilu.hutool.map.MapUtil;
 import lombok.extern.slf4j.Slf4j;

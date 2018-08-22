@@ -24,9 +24,9 @@ package com.tubatao.eagle.authorization.config;
 
 import com.tubatao.eagle.authorization.config.properties.jwt.JksPropertiesConfig;
 import com.tubatao.eagle.authorization.config.properties.jwt.MacPropertiesConfig;
-import com.tubatao.eagle.authorization.constants.SecurityConstants;
 import com.tubatao.eagle.authorization.dto.UserDetailsImpl;
 import com.tubatao.eagle.authorization.exception.FileException;
+import com.tubatao.eagle.common.constant.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -38,7 +38,6 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
-
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;

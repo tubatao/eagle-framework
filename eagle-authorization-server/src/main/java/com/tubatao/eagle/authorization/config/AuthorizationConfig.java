@@ -22,7 +22,7 @@
  */
 package com.tubatao.eagle.authorization.config;
 
-import com.tubatao.eagle.authorization.constants.SecurityConstants;
+import com.tubatao.eagle.common.constant.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

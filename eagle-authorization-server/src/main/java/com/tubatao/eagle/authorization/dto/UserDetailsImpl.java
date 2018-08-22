@@ -23,8 +23,8 @@
 package com.tubatao.eagle.authorization.dto;
 
 
-import com.tubatao.eagle.authorization.constants.CommonConstant;
-import com.tubatao.eagle.authorization.constants.SecurityConstants;
+import com.tubatao.eagle.common.constant.CommonConstant;
+import com.tubatao.eagle.common.constant.SecurityConstants;
 import com.tubatao.eagle.common.vo.SysRole;
 import com.tubatao.eagle.common.vo.UserVO;
 import org.apache.commons.lang.StringUtils;

@@ -22,7 +22,7 @@
  */
 package com.tubatao.eagle.authorization.mobile;
 
-import com.tubatao.eagle.authorization.constants.SecurityConstants;
+import com.tubatao.eagle.common.constant.SecurityConstants;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
