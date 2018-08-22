@@ -56,7 +56,7 @@ public class Application{
 			defaultProfile = "development";
 		}
 		if (externalConfigLocation != null){
-			logger.debug("Found external configuration file [" + externalConfigLocation + "]. This will override the default properties.");
+			logger.debug("Found external configuration file [" + externalConfigLocation + "]. This will override the default redis.");
 		}
 
 		String user = env.getProperty("user.name");
