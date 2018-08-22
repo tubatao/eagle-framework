@@ -25,7 +25,7 @@ package com.tubatao.eagle.authorization.mobile;
 
 import com.tubatao.eagle.authorization.dto.UserDetailsImpl;
 import com.tubatao.eagle.authorization.feign.UserService;
-import com.tubatao.eagle.authorization.vo.UserVO;
+import com.tubatao.eagle.common.vo.UserVO;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

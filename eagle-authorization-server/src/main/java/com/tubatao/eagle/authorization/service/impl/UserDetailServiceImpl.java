@@ -25,7 +25,7 @@ package com.tubatao.eagle.authorization.service.impl;
 
 import com.tubatao.eagle.authorization.dto.UserDetailsImpl;
 import com.tubatao.eagle.authorization.feign.UserService;
-import com.tubatao.eagle.authorization.vo.UserVO;
+import com.tubatao.eagle.common.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

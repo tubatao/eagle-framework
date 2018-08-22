@@ -25,13 +25,12 @@ package com.tubatao.eagle.authorization.dto;
 
 import com.tubatao.eagle.authorization.constants.CommonConstant;
 import com.tubatao.eagle.authorization.constants.SecurityConstants;
-import com.tubatao.eagle.authorization.vo.SysRole;
-import com.tubatao.eagle.authorization.vo.UserVO;
+import com.tubatao.eagle.common.vo.SysRole;
+import com.tubatao.eagle.common.vo.UserVO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
