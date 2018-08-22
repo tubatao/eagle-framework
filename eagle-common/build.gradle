@@ -29,7 +29,7 @@ buildscript {
     }
 }
 group = 'com.tubatao.eagle'
-version = '1.0.0-RELEASE'
+version = '1.0.0-SNAPSHOT'
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -42,7 +42,7 @@ publishing {
     repositories {
         maven {
             name "eagle"
-            url "http://nexus.server/repository/eagle/"
+            url "http://nexus.server/repository/eagle_snapshot/"
             credentials {
                 username "admin"
                 password "admin123"
