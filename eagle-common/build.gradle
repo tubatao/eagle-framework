@@ -94,4 +94,6 @@ dependencies {
     compile ("com.alibaba:fastjson:1.2.46")
     compile ("com.fasterxml.jackson.core:jackson-databind:2.9.6")
     compile ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6")
+    compile ("org.springframework.boot:spring-boot-starter-data-jpa:${spring_bootVersion}")
+
 }
