@@ -120,6 +120,7 @@ dependencies {
     compile ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6")
     compile ("io.springfox:springfox-swagger2:2.9.2")
     compile ("com.xiaoleilu:hutool-all:3.3.2")
+    compile ("com.tubatao.eagle:eagle-common:1.0.0-RELEASE")
 
     testCompile("org.springframework.boot:spring-boot-starter-test:${spring_bootVersion}")
 }
