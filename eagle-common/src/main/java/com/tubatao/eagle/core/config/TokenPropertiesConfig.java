@@ -20,7 +20,7 @@
  * Date         Version     Name                Description
  * 7/27/2018  1.0         liuzhiheng         Creation File
  */
-package com.tubatao.eagle.authorization.config.properties;
+package com.tubatao.eagle.core.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;

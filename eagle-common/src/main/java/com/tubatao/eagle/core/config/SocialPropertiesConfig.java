@@ -20,7 +20,7 @@
  * Date         Version     Name                Description
  * 7/12/18  1.0         liuzhiheng         Creation File
  */
-package com.tubatao.eagle.authorization.config.properties;
+package com.tubatao.eagle.core.config;
 
 import lombok.Data;
 
