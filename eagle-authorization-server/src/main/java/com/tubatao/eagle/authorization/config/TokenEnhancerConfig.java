@@ -22,8 +22,8 @@
  */
 package com.tubatao.eagle.authorization.config;
 
-import com.tubatao.eagle.authorization.config.jwt.JksPropertiesConfig;
-import com.tubatao.eagle.authorization.config.jwt.MacPropertiesConfig;
+import com.tubatao.eagle.authorization.config.jwt.RsaPropertiesConfig;
+import com.tubatao.eagle.authorization.config.jwt.ShaPropertiesConfig;
 import com.tubatao.eagle.authorization.dto.UserDetailsImpl;
 import com.tubatao.eagle.authorization.exception.FileException;
 import com.tubatao.eagle.common.constant.SecurityConstants;
@@ -52,9 +52,9 @@ import java.util.Map;
 public class TokenEnhancerConfig {
 
     @Autowired
-    private JksPropertiesConfig jksPropertiesConfig;
+    private RsaPropertiesConfig rsaPropertiesConfig;
     @Autowired
-    private MacPropertiesConfig macPropertiesConfig;
+    private ShaPropertiesConfig macPropertiesConfig;
 
     @Bean
     @ConditionalOnProperty(prefix = "jwt",name = "encryption",havingValue = "rsa")
@@ -62,27 +62,27 @@ public class TokenEnhancerConfig {
         JwtAccessTokenConverter jwtAccessTokenConverter = new EagleJwtAccessTokenConverter();
         KeyStoreKeyFactory keyStoreKeyFactory;
         StringBuffer filePath=new StringBuffer();
-        if(jksPropertiesConfig.getPath()!=null){
-            filePath.append(jksPropertiesConfig.getPath());
+        if(rsaPropertiesConfig.getPath()!=null){
+            filePath.append(rsaPropertiesConfig.getPath());
             filePath.append(File.separator);
-            filePath.append(jksPropertiesConfig.getFileName());
+            filePath.append(rsaPropertiesConfig.getFileName());
             try{
-                keyStoreKeyFactory = new KeyStoreKeyFactory(new FileSystemResource(filePath.toString()), jksPropertiesConfig.getPassword().toCharArray());
+                keyStoreKeyFactory = new KeyStoreKeyFactory(new FileSystemResource(filePath.toString()), rsaPropertiesConfig.getPassword().toCharArray());
             }catch (Exception ex){
                 //TODO: 异常错误代码定义
                 throw new FileException("file not found!",ex);
             }
         }else {
-            filePath.append(jksPropertiesConfig.getFileName());
-            keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource(filePath.toString()), jksPropertiesConfig.getPassword().toCharArray());
+            filePath.append(rsaPropertiesConfig.getFileName());
+            keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource(filePath.toString()), rsaPropertiesConfig.getPassword().toCharArray());
 
         }
-        jwtAccessTokenConverter.setKeyPair(keyStoreKeyFactory.getKeyPair(jksPropertiesConfig.getAlias()));
+        jwtAccessTokenConverter.setKeyPair(keyStoreKeyFactory.getKeyPair(rsaPropertiesConfig.getAlias()));
         return jwtAccessTokenConverter;
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "jwt",name = "encryption",havingValue = "mac")
+    @ConditionalOnProperty(prefix = "jwt",name = "encryption",havingValue = "sha")
     public JwtAccessTokenConverter jwtShaAccessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new EagleJwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(macPropertiesConfig.getKey());

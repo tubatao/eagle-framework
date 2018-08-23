@@ -33,9 +33,9 @@ import org.springframework.context.annotation.Configuration;
  * @date 7/27/2018 9:35 AM
  */
 @Configuration
-@ConditionalOnProperty(prefix = "jwt.mac",name = "key")
-@ConfigurationProperties(prefix = "jwt.mac")
-public class MacPropertiesConfig {
+@ConditionalOnProperty(prefix = "jwt.sha",name = "key")
+@ConfigurationProperties(prefix = "jwt.sha")
+public class ShaPropertiesConfig {
     private String key;
 
     public String getKey() {

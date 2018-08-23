@@ -59,14 +59,14 @@ redis:
 
 # jwt configuration
 jwt:
-    jks:
+    rsa:
         #path: /work/opt
         fileName: keystore.jks
         password: 123456
         alias: tubatao
-    mac:
+    sha:
         key: eagle_!@#$%EFS$s42lS32sd^$@#$D%@#%^*FLJOIYsdl32#@$#@sdf23$
-    encryption: rsa  # 加密方式 mac 或者rsa
+    encryption: rsa  # 加密方式 sha 或者rsa
 
 
 token:

@@ -33,9 +33,9 @@ import org.springframework.context.annotation.Configuration;
  * @date 7/27/2018 9:33 AM
  */
 @Configuration
-@ConditionalOnProperty(prefix = "jwt.jks",name = "alias")
-@ConfigurationProperties(prefix = "jwt.jks")
-public class JksPropertiesConfig {
+@ConditionalOnProperty(prefix = "jwt.rsa",name = "alias")
+@ConfigurationProperties(prefix = "jwt.rsa")
+public class RsaPropertiesConfig {
     private String fileName;
     private String path;
     private String password;
