@@ -43,7 +43,7 @@ import org.springframework.core.env.StandardEnvironment;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
-@ComponentScan(basePackages = {"com.tubatao.eagle.authorization"})
+@ComponentScan(basePackages = {"com.tubatao.eagle.authorization","com.tubatao.eagle.core"})
 public class Application{
 	private static Logger logger = LoggerFactory.getLogger(Application.class);
 	public static void main(String[] args) throws Throwable {
