@@ -22,8 +22,8 @@
  */
 package com.tubatao.eagle.authorization.config;
 
-import com.tubatao.eagle.authorization.config.properties.FilterIgnorePropertiesConfig;
 import com.tubatao.eagle.authorization.mobile.MobileSecurityConfig;
+import com.tubatao.eagle.core.config.FilterIgnorePropertiesConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;

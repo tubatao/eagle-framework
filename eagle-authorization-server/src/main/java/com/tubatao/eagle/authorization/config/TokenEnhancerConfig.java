@@ -22,8 +22,8 @@
  */
 package com.tubatao.eagle.authorization.config;
 
-import com.tubatao.eagle.authorization.config.properties.jwt.JksPropertiesConfig;
-import com.tubatao.eagle.authorization.config.properties.jwt.MacPropertiesConfig;
+import com.tubatao.eagle.authorization.config.jwt.JksPropertiesConfig;
+import com.tubatao.eagle.authorization.config.jwt.MacPropertiesConfig;
 import com.tubatao.eagle.authorization.dto.UserDetailsImpl;
 import com.tubatao.eagle.authorization.exception.FileException;
 import com.tubatao.eagle.common.constant.SecurityConstants;
