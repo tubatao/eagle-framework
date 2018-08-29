@@ -1,0 +1,7 @@
+# logging
+logging:
+    level:
+        org.springframework: WARN
+        org.hibernate.SQL: WARN
+        com.tubatao.eagle: DEBUG
+    config: classpath:logback.xml

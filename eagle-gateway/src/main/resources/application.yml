@@ -1,0 +1,46 @@
+#logging
+logging: 
+    level: 
+        org.hibernate.SQL: WARN
+
+authorization:
+    interceptor:
+        prefix: /api
+# Configuration for Spring Framework
+# MVC it is just used for InternalResourceViewResolver
+#spring.view.prefix=
+#spring.view.suffix=
+#date-format
+spring: 
+    jackson: 
+        serialization: 
+            write-dates-as-timestamps: false
+    messages: 
+        basename: messages
+        encoding: UTF-8
+
+    #rabbit mq
+    rabbitmq:
+        host: 10.0.5.204
+        port: 5672
+        username: guest
+        password: guest
+    zipkin:
+        rabbitmq:
+            queue: zipkin
+
+    datasource:
+        url: jdbc:mysql://mysql.server:3308/pig?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: 123456
+        druid:
+             driver-class-name: com.mysql.cj.jdbc.Driver
+
+#redis configuration
+redis:
+    host: redis.server
+    port: 6379
+    password: peony_redis
+    maxActive: 300
+    maxIdle: 100
+    maxWait: 50000
