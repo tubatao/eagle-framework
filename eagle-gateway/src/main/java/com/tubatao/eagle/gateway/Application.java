@@ -25,7 +25,6 @@ package com.tubatao.eagle.gateway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -41,7 +40,7 @@ import org.springframework.core.env.StandardEnvironment;
  * @author liuzhiheng
  * @date Jul 10, 2018 4:02:11 PM
  */
-@SpringBootApplication
+
 @EnableZuulProxy
 @EnableFeignClients
 @SpringCloudApplication
