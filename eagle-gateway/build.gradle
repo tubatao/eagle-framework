@@ -1,0 +1,141 @@
+buildscript {
+    ext {
+        spring_bootVersion = '1.5.9.RELEASE'
+    }
+    repositories {
+        maven {
+            name "tubatao"
+            url "http://nexus.server/repository/tubatao"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_bootVersion}"
+        classpath 'org.springframework:springloaded:1.2.8.RELEASE'
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE'
+        classpath 'com.bmuschko:gradle-docker-plugin:3.0.11'
+    }
+}
+plugins {
+    // Add Git redis plugin.
+    id 'com.gorylenko.gradle-git-properties' version '1.5.1'
+}
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'distribution'
+apply plugin: 'application'
+apply plugin: 'com.bmuschko.docker-java-application'
+apply plugin: "com.gorylenko.gradle-git-properties"
+ext {
+    docker_registry = 'docker-registry.cloudolp.com:5000'
+}
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+}
+distributions {
+    main {
+        contents {
+            from("$buildDir/libs") {
+                into "lib"
+            }
+            from "${sourceSets.main.output.classesDirs.asPath}"
+        }
+    }
+}
+task pathingJar(type: Jar) {
+    dependsOn configurations.runtime
+    appendix = 'pathing'
+
+    doFirst {
+        manifest {
+            attributes "Class-Path": configurations.runtime.files.collect {
+                it.toURI().toString().replaceFirst('/file:/+/', '/')
+            }.join(' ')
+        }
+    }
+}
+bootRun {
+    dependsOn pathingJar
+    doFirst {
+        classpath = files(sourceSets.main.output.files, pathingJar.archivePath)
+    }
+}
+jar {
+    baseName = "${project.name}"
+    version =  '1.0.0'
+    excludes = ['**/application-*.yml']
+}
+task('execJar', type:Jar, dependsOn: 'jar') {
+    baseName = "${project.name}"
+    version =  '1.0.0'
+    classifier = 'exec'
+    from sourceSets.main.output
+}
+docker {
+    javaApplication {
+        maintainer = 'John.liu "liuzhiheng@tubatao.com"'
+        tag = "${docker_registry}/${project.name}"
+    }
+}
+bootRepackage  {
+    withJarTask = tasks['execJar']
+    executable true
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:Cairo-RELEASE'
+    }
+    imports {
+        mavenBom 'org.springframework.data:spring-data-releasetrain:Brussels-SR11'
+    }
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.SR4"
+    }
+    imports {
+        mavenBom 'com.macrame.bom:macrame-bom:latest.integration'
+    }
+    resolutionStrategy {
+        eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'io.netty' && details.requested.name == 'netty-codec-http') {
+                details.useVersion '4.1.26.Final'
+            }
+        }
+        cacheChangingModulesFor 0, 'seconds'
+    }
+}
+dependencies {
+//    compile ("org.springframework.cloud:spring-cloud-starter-eureka:1.4.4.RELEASE")
+//    compile ("org.springframework.cloud:spring-cloud-netflix-eureka-client:1.3.0.RELEASE")
+//    compile ("org.springframework.cloud:spring-cloud-starter-security:1.2.1.RELEASE")
+//    compile ("org.springframework.cloud:spring-cloud-starter-oauth2:1.2.1.RELEASE")
+//    compile ("org.springframework.cloud:spring-cloud-starter-feign:1.2.2.RELEASE")
+//    compile ("org.springframework.boot:spring-boot-starter-data-redis:${spring_bootVersion}")
+//    compile ("org.springframework.boot:spring-boot-starter-data-jpa:${spring_bootVersion}")
+//    compile ("org.springframework.boot:spring-boot-configuration-processor:${spring_bootVersion}")
+//    compile ("org.projectlombok:lombok:1.18.0")
+//    compile ("mysql:mysql-connector-java:8.0.11")
+//    compile ("com.alibaba:fastjson:1.2.47")
+//    compile ("io.jsonwebtoken:jjwt:0.9.1")
+//    compile ("com.fasterxml.jackson.core:jackson-databind:2.9.6")
+//    compile ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6")
+//    compile ("io.springfox:springfox-swagger2:2.9.2")
+//    compile ("com.xiaoleilu:hutool-all:3.3.2")
+
+    compile ("org.springframework.cloud:spring-cloud-starter-zuul:1.4.5.RELEASE")
+    compile ("com.marcosbarbero.cloud:spring-cloud-zuul-ratelimit:1.5.0.RELEASE")
+    compile ("org.springframework.cloud:spring-cloud-starter-oauth2:1.2.3.RELEASE")
+    compile ("org.springframework.cloud:spring-cloud-starter-feign:1.4.5.RELEASE")
+    compile ("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:1.4.5.RELEASE")
+    compile ("io.springfox:springfox-swagger-ui:2.9.2")
+    compile ("io.springfox:springfox-swagger-common:2.9.2")
+
+//    compile ("org.springframework.cloud:spring-cloud-starter-zipkin:1.3.4.RELEASE")
+    compile ("org.springframework.boot:spring-boot-starter-data-redis:${spring_bootVersion}")
+    compile ("org.projectlombok:lombok:1.18.0")
+    compile ("com.xiaoleilu:hutool-all:3.3.2")
+    compile ("mysql:mysql-connector-java:8.0.11")
+    compile ("com.tubatao.eagle:eagle-common:1.0.0-20180829.023406-9")
+
+
+    testCompile("org.springframework.boot:spring-boot-starter-test:${spring_bootVersion}")
+}
