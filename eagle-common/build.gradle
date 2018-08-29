@@ -81,14 +81,14 @@ dependencies {
     compile ("org.springframework.boot:spring-boot-starter-data-redis")
     compile ("org.springframework.boot:spring-boot-starter-cache")
     compile ("org.springframework.boot:spring-boot-starter-aop")
+    compile ("org.springframework.boot:spring-boot-starter-web")
+    compile ("org.springframework.cloud:spring-cloud-context")
     compile ("org.springframework.retry:spring-retry")
-    compile ("org.springframework.cloud:spring-cloud-starter-bus-amqp")
     compile ("com.baomidou:mybatis-plus:2.1.9")
     compile ("org.freemarker:freemarker:2.3.28")
     compile ("com.xiaoleilu:hutool-all:3.3.2")
     compile ("io.springfox:springfox-swagger2:2.9.2")
     compile ("com.luhuiguo:fastdfs-spring-boot-starter:0.2.0")
-    compile ("org.springframework.cloud:spring-cloud-starter-bus-amqp")
     compile ("org.projectlombok:lombok:1.18.0")
     compile ("com.alibaba:transmittable-thread-local:2.2.0")
     compile ("io.jsonwebtoken:jjwt:0.9.0")
@@ -96,5 +96,4 @@ dependencies {
     compile ("com.fasterxml.jackson.core:jackson-databind:2.9.6")
     compile ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6")
     compile ("org.springframework.boot:spring-boot-starter-data-jpa:${spring_bootVersion}")
-
 }
