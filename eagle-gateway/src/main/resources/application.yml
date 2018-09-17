@@ -1,46 +1,75 @@
 #logging
-logging: 
-    level: 
+logging:
+    level:
         org.hibernate.SQL: WARN
 
 authorization:
     interceptor:
-        prefix: /api
+        ignored-url: /*/v*/public/api/**,/*/v*/mobile/public/api/**
+        permitted-url: /*/v*/mobile/api/**
 # Configuration for Spring Framework
 # MVC it is just used for InternalResourceViewResolver
 #spring.view.prefix=
 #spring.view.suffix=
 #date-format
-spring: 
-    jackson: 
-        serialization: 
+spring:
+    jackson:
+        serialization:
             write-dates-as-timestamps: false
-    messages: 
+    messages:
         basename: messages
         encoding: UTF-8
 
-    #rabbit mq
-    rabbitmq:
-        host: 10.0.5.204
-        port: 5672
-        username: guest
-        password: guest
-    zipkin:
-        rabbitmq:
-            queue: zipkin
-
     datasource:
-        url: jdbc:mysql://mysql.server:3308/pig?useUnicode=true&characterEncoding=utf-8
+        url: jdbc:mysql://mysql.server:3306/pig?useUnicode=true&characterEncoding=utf-8
         username: root
         password: 123456
         druid:
              driver-class-name: com.mysql.cj.jdbc.Driver
 
-#redis configuration
-redis:
-    host: redis.server
-    port: 6379
-    password: peony_redis
-    maxActive: 300
-    maxIdle: 100
-    maxWait: 50000
+zuul:
+    ignoredServices: '*'
+    routes:
+        user-center-service:
+            path: /user/v1.0/**
+            serviceId: user-center-service-v1-0
+            stripPrefix: true
+        foundation-service:
+            path: /foundation/v1.0/**
+            serviceId: foundation-service-v1-0
+            stripPrefix: true
+        auth-service:
+            path: /auth/**
+            serviceId: eagle-authorization-server
+            stripPrefix: true
+    add-proxy-headers: true
+config:
+    security:
+        rsa:
+            enabled: true
+
+
+security:
+    auth:
+        server: http://eagle-authorization-server:9010             #认证服务器地址
+    encode:
+        key: '1234567887654321' #必须16位
+    validate:
+        code: true
+        preview: true
+    sessions: stateless
+    oauth2:
+        client:
+            client-id: eagle
+            client-secret: eagle
+        resource:
+            jwt:
+                key-uri: ${security.auth.server}/oauth/token_key #解析jwt令牌所需要密钥的地址
+
+
+ignore:
+    urls:
+        - /mobile/**
+        - /auth/**
+
+
